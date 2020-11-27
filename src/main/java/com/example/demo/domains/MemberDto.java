@@ -5,10 +5,12 @@ import org.springframework.stereotype.Component;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @Component
 public class MemberDto {
     protected int memId;
     protected String memName, password;
+    // memId, memName, password
+
 }
