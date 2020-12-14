@@ -11,52 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <h1>학생등록</h1>
-    <form action="">
-    <table>
-        <tr> 
-            <!--// memId, memName, password-->
-            <td>ID</td>
-            <td><input id="memId" type="text"></td>
-        </tr>
-        <tr>
-            <td>PW</td>
-            <td><input id="password" type="text"></td>
-        </tr>
-        <tr>
-            <td>NAME</td>
-            <td><input id="memName" type="text"></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input id="join-btn" type="submit" value="회원가입"/>
-                <input type="button" value="취소"/>
-            </td>
-        </tr>
-    </table>
-</form>
-<button onclick="document.getElementById('regdate').innerHTML=Date()">가입일 출력</button>
-<span id="regdate"></span>
-<script>
-    document.getElementById("join-btn")
-     .addEventListener('click', e => {
-         e.preventDefault()
-         alert(`클릭 성공 ! ${document.getElementById('memName').value}`)
-         $.ajax({
-             url: '/students/'+document.getElementById('memId').value,
-             type: 'POST',
-             data: JSON.stringify({memName: document.getElementById('memName').value,
-                                   password: document.getElementById('password').value}),
-             dataType: 'json',
-             contentType: 'application/json',
-             success: d => {
-                 alert(`${d.memName} 님 회원가입 성공 !`)
-             },
-             error: e =>{
-                 alert(`전송실패 ${e}`)
-             }                   
-             })
-        })
-</script>
+    <h1>홈페이지</h1>
+
 </body>
 </html>
