@@ -6,5 +6,5 @@ import lombok.Data;
 
 @Component @Data
 public class StudentDto {
-    private String stuNum, userid, password, name, ssn, regDate;
+    private String stuNum, userid, password, name, ssn, regDate, subject, profileImage;
 }

@@ -6,5 +6,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         insert into teachers (tea_num, name, password, subject)
         values (#{teaNum}, #{name}, #{password}, #{subject})
     </insert>
-
+    <select id="selectAll" resultType="com.example.demo.sym.service.model.TeacherDto">
+        select tea_num teaNum, name, email, password, subject, profile_image profileImage
+        from teachers
+    </select>
+    <select id="selectById" resultType="com.example.demo.sym.service.model.TeacherDto"
+    parameterType="string">
+        select tea_num teaNum, name, email, password, subject, profile_image profileImage
+        from teachers where email like #{value}
+    </select>
+    <select id="login" resultType="com.example.demo.sym.service.model.TeacherDto"
+    parameterType="com.example.demo.sym.service.model.TeacherDto">
+        select tea_num teaNum, name, email, password, subject, profile_image profileImage
+        where email like #{email} and password like #{password}
+    </select>
 </mapper>

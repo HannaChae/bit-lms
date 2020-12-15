@@ -24,4 +24,13 @@ public class HomeController {
         logger.info("이동 페이지: "+page);
         return String.format("%s/%s", dir, page);
     }
+    
+    @GetMapping("/transfer/{dir}/{sub}/{page}")
+    public String transfer(@PathVariable String dir,
+    @PathVariable String sub, @PathVariable String page){
+        logger.info("이동 디렉토리: "+dir);
+        logger.info("이동 서브 디렉토리: "+sub);
+        logger.info("이동 페이지: "+page);
+        return String.format("%s/%s/%s", dir, sub, page);
+    }
 }
