@@ -25,13 +25,18 @@ public class TeacherServiceimpl implements TeacherService {
     }
 
     @Override
-    public TeacherDto detail(String email) {
-        return teacherMapper.selectById(email);
+    public TeacherDto findById(String teaNum) {
+        return teacherMapper.selectById(teaNum);
     }
 
     @Override
-    public TeacherDto login(TeacherDto teacher) {
-        return teacherMapper.login(teacher);
+    public int update(TeacherDto teacher) {
+        return teacherMapper.update(teacher);
     }
-    
+
+    @Override
+    public int delete(TeacherDto teacher) {
+        return teacherMapper.delete(teacher);
+    }
+
 }

@@ -18,4 +18,8 @@ public interface StudentService {
 
 	public List<?> list();
 
+	public int update(StudentDto student);
+
+	public int delete(StudentDto student);
+
 }

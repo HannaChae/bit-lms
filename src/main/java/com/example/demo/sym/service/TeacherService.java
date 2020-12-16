@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
 public interface TeacherService {
     public int register(TeacherDto teacher);
 	public List<?> list();
-	public TeacherDto detail(String email);
-	public TeacherDto login(TeacherDto teacher);
+	public TeacherDto findById(String teaNum);
+	public int update(TeacherDto teacher);
+	public int delete(TeacherDto teacher);
     
 }

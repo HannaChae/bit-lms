@@ -10,7 +10,9 @@ import org.springframework.stereotype.Repository;
 public interface TeacherMapper {
 	public int insert(TeacherDto teacher);
 	public List<TeacherDto> selectAll();
-	public TeacherDto selectById(String email);
+	public TeacherDto selectById(String teaNum);
 	public TeacherDto login(TeacherDto teacher);
+	public int update(TeacherDto teacher);
+	public int delete(TeacherDto teacher);
     
 }
