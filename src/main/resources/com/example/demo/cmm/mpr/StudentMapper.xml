@@ -22,11 +22,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     <update id="update" parameterType="com.example.demo.uss.service.model.StudentDto">
         update students set subject = #{subject} 
-        where userid like #{userid} 
+        where stuNum like #{stuNum} 
     </update>
     <delete id="delete" parameterType="com.example.demo.uss.service.model.StudentDto">
         delete from students
-        where userid like #{userid} 
+        where stuNum like #{stuNum} 
     </delete>
-
 </mapper>

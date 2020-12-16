@@ -46,16 +46,16 @@ public class StudentController {
         return map;
     }
 
-    @GetMapping("/{userid}")
-    public StudentDto profile(@PathVariable String userid){
-        logger.info("프로필 정보: "+userid);
-        return studentService.detail(userid);
-    }
-
     @GetMapping("")
     public List<?> list(){
         logger.info("=====학생 목록 조회=====");
         return studentService.list();
+    }
+    
+    @GetMapping("/{userid}")
+    public StudentDto profile(@PathVariable String userid){
+        logger.info("프로필 정보: "+userid);
+        return studentService.detail(userid);
     }
 
     @PutMapping("")
@@ -69,11 +69,13 @@ public class StudentController {
 
     @DeleteMapping("")
     public Map<?,?> delete(@RequestBody StudentDto student){
-        logger.info("학생 삭제 요청 진입: 삭제정보 = "+student.getUserid());
+        logger.info("학생 삭제 요청 진입: 삭제정보 = "+student.getStuNum());
         var map = new HashMap<>();
         int result = studentService.delete(student);
         map.put("message", (result == 1) ? "SUCCESS": "FAILURE");
         return map;
     }
+    
+
 
 }

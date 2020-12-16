@@ -519,65 +519,65 @@
 										<a id="info-update" class="btn btn-primary btn-sm" href="#">정보수정</a>
 										<a id="info-delete" class="btn btn-danger btn-sm" href="#"><span data-feather="message-square"></span>정보삭제</a>
 									</div>`)	
-		$('#subject').html(`<h5 class="h6 card-title">수강과목</h5>
-		                         <span id="updateSubject"><a href="#" class="badge badge-primary mr-1 my-1">${d.subject}</a></span>`)						
-		$('#about').html(`<h5 class="h6 card-title">About</h5>
-									<ul class="list-unstyled mb-0">
-										<li class="mb-1"><span data-feather="home" class="feather-sm mr-1"></span> 학생번호 : <a href="#">${d.stuNum}</a></li>
+			$('#subject').html(`<h5 class="h6 card-title">수강과목</h5>
+									<span id="updateSubject"><a href="#" class="badge badge-primary mr-1 my-1">${d.subject}</a></span>`)						
+			$('#about').html(`<h5 class="h6 card-title">About</h5>
+										<ul class="list-unstyled mb-0">
+											<li class="mb-1"><span data-feather="home" class="feather-sm mr-1"></span> 학생번호 : <a href="#">${d.stuNum}</a></li>
 
-										<li class="mb-1"><span data-feather="briefcase" class="feather-sm mr-1"></span> 생년월일 <a href="#">${d.ssn}</a></li>
-										<li id="updateAddr" class="mb-1"><span data-feather="map-pin" class="feather-sm mr-1"></span> 주소 <a href="#">서울</a></li>
-									</ul>`)
-		$(`#info-update`).click(e=>{
-			$(`#updateSubject`).html(`<input id="changeSubject" type="text" value="${d.subject}" placeholder="${d.subject}">`)
-			$(`#updateAddr`).html(`<span data-feather="map-pin" class="feather-sm mr-1"></span> 주소 : <input type="text" placeholder="서울">
-				<button id="updateConfirm"> 수정확인 </button><button id="updateCancel"> 수정취소 </button>`)
-			$(`#updateConfirm`).click(e=>{
-				$.ajax({
-					url:`/students`,
-					type:`PUT`,
-					date:JSON.stringify({
-						userid: d.userid,
-						subject:$(`#changeSubject`).val()
-					}),
-					dataType:`json`,
-					contentType:`application/json`,
-					success:d2=>{
-						if(d2.message === `SUCCESS`){
-							location.href = `transfer/sym/mgr/student`
+											<li class="mb-1"><span data-feather="briefcase" class="feather-sm mr-1"></span> 생년월일 <a href="#">${d.ssn}</a></li>
+											<li id="updateAddr" class="mb-1"><span data-feather="map-pin" class="feather-sm mr-1"></span> 주소 <a href="#">서울</a></li>
+										</ul>`)
+			$(`#info-update`).click(e=>{
+				$(`#updateSubject`).html(`<input id="changeSubject" type="text" value="${d.subject}" placeholder="${d.subject}">`)
+				$(`#updateAddr`).html(`<span data-feather="map-pin" class="feather-sm mr-1"></span> 주소 : <input type="text" placeholder="서울">
+					<button id="updateConfirm"> 수정확인 </button><button id="updateCancel"> 수정취소 </button>`)
+				$(`#updateConfirm`).click(e=>{
+					$.ajax({
+						url:`/students`,
+						type:`PUT`,
+						date:JSON.stringify({
+							stuNum: d.stuNum,
+							subject:$(`#changeSubject`).val()
+						}),
+						dataType:`json`,
+						contentType:`application/json`,
+						success:d2=>{
+							if(d2.message === `SUCCESS`){
+								location.href = `transfer/sym/mgr/student`
 
-						}else{
-							alert(`수정에 실패했습니다.`)
-							location.href = `transfer/sym/mgr/student`
+							}else{
+								alert(`수정에 실패했습니다.`)
+								location.href = `transfer/sym/mgr/student`
+							}
+						},
+						error:e=>{
+							alert(`AJAX 수정 실패`)
 						}
-					},
-					error:e=>{
-						alert(`AJAX 수정 실패`)
-					}
+					})
 				})
 			})
-		})
-		$(`#info-delete`).click(e=>{
-				$.ajax({
-					url:`/students`,
-					type:`DELETE`,
-					date:JSON.stringify({
-						userid: d.userid
-					}),
-					dataType:`json`,
-					contentType:`application/json`,
-					success:d2=>{
-						if(d2.message === `SUCCESS`){
-							location.href = `transfer/sym/mgr/index`
-						}else{
-							alert(`삭제에 실패했습니다.`)
+			$(`#info-delete`).click(e=>{
+					$.ajax({
+						url:`/students`,
+						type:`DELETE`,
+						date:JSON.stringify({
+							stuNum: d.stuNum
+						}),
+						dataType:`json`,
+						contentType:`application/json`,
+						success:d2=>{
+							if(d2.message === `SUCCESS`){
+								location.href = `transfer/sym/mgr/index`
+							}else{
+								alert(`삭제에 실패했습니다.`)
+							}
+						},
+						error:e=>{
+							alert(`AJAX 삭제 실패`)
 						}
-					},
-					error:e=>{
-						alert(`AJAX 삭제 실패`)
-					}
-				})
-	    })
+					})
+			})
         })
 	</script>
 
