@@ -3,12 +3,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.cmm.mpr.StudentMapper">
     <insert id="insert" parameterType="com.example.demo.uss.service.model.StudentDto">
-        insert into students (stu_num stuNum, userid, password, name, ssn, reg_date, subject) values
-        (#{userid}, #{password}, #{name}, #{ssn}, #{regDate}, #{subject})
+        insert into students (stu_num, userid, password, name, ssn, reg_date, subject) values
+        (#{stuNum}, #{userid}, #{password}, #{name}, #{ssn}, #{regDate}, #{subject})
     </insert>
     <select id="login" resultType="com.example.demo.uss.service.model.StudentDto"
     parameterType="com.example.demo.uss.service.model.StudentDto">
-        select userid, password, name, ssn, reg_date regDate, subject, profile_image from students 
+        select userid, password, name, ssn, reg_date regDate, subject, profile_image profileImage from students 
         where userid like #{userid} and password like #{password}
     </select>
     <select id="selectById" resultType="com.example.demo.uss.service.model.StudentDto"
@@ -22,10 +22,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     <update id="update" parameterType="com.example.demo.uss.service.model.StudentDto">
         update students set subject = #{subject} 
-        where stuNum like #{stuNum} 
+        where stu_num like #{stuNum} 
     </update>
     <delete id="delete" parameterType="com.example.demo.uss.service.model.StudentDto">
         delete from students
-        where stuNum like #{stuNum} 
+        where stu_num like #{stuNum} 
     </delete>
 </mapper>
